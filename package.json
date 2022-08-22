@@ -1,6 +1,6 @@
 {
-  "name": "playwright-aws-lambda",
-  "version": "0.10.0",
+  "name": "@oro-dxeco/playwright-aws-lambda",
+  "version": "0.10.2",
   "description": "Support for running Microsoft's Playwrite on AWS Lambda and Google Cloud functions",
   "repository": {
     "type": "git",
@@ -8,7 +8,7 @@
   },
   "license": "MIT",
   "main": "./dist/src/",
-  "author": "Austin Kelleher, a@alk.im",
+  "author": "ORO <oro_dxeco@jp.oro.com>",
   "publishConfig": {
     "access": "public"
   },
@@ -18,11 +18,11 @@
   "scripts": {
     "compile-src-cjs": "tsc --declaration --declarationDir ./dist -p tsconfig-src-cjs.json && cp -R ./src/bin ./dist/src",
     "precompile-src": "rm -rf ./dist",
-    "compile-src": "yarn compile-src-cjs",
+    "compile-src": "npm run compile-src-cjs",
     "lint": "tslint --format codeFrame --project tsconfig.json 'src/**/*.ts' 'test/**/*.ts'",
-    "pretest": "yarn lint",
+    "pretest": "npm run lint",
     "test": "jest",
-    "build": "yarn compile-src",
+    "build": "npm run compile-src",
     "format-code": "prettier --write '**/*.[jt]s'"
   },
   "dependencies": {
