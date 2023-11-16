@@ -1,14 +1,14 @@
 {
-  "name": "playwright-aws-lambda",
-  "version": "0.10.0",
+  "name": "@oro-dxeco/playwright-aws-lambda",
+  "version": "119.0.2",
   "description": "Support for running Microsoft's Playwrite on AWS Lambda and Google Cloud functions",
   "repository": {
     "type": "git",
-    "url": "https://github.com/JupiterOne/playwright-aws-lambda"
+    "url": "https://github.com/oro-dxeco/playwright-aws-lambda"
   },
   "license": "MIT",
   "main": "./dist/src/",
-  "author": "Austin Kelleher, a@alk.im",
+  "author": "ORO <oro_dxeco@jp.oro.com>",
   "publishConfig": {
     "access": "public"
   },
@@ -16,8 +16,8 @@
     "node": ">= 8.0.0"
   },
   "scripts": {
-    "compile-src-cjs": "tsc --declaration --declarationDir ./dist -p tsconfig-src-cjs.json && cp -R ./src/bin ./dist/src",
-    "precompile-src": "rm -rf ./dist",
+    "compile-src-cjs": "tsc --declaration --declarationDir ./dist -p tsconfig-src-cjs.json && shx cp -R ./node_modules/@sparticuz/chromium/bin ./dist/src",
+    "precompile-src": "shx rm -rf ./dist",
     "compile-src": "yarn compile-src-cjs",
     "lint": "tslint --format codeFrame --project tsconfig.json 'src/**/*.ts' 'test/**/*.ts'",
     "pretest": "yarn lint",
@@ -26,6 +26,7 @@
     "format-code": "prettier --write '**/*.[jt]s'"
   },
   "dependencies": {
+    "@sparticuz/chromium": "^119.0.0",
     "lambdafs": "^2.1.1"
   },
   "peerDependencies": {
@@ -43,6 +44,7 @@
     "playwright-core": "^1.3.0",
     "pngjs": "^5.0.0",
     "prettier": "^2.0.5",
+    "shx": "^0.3.4",
     "ts-jest": "^26.2.0",
     "tslint": "^6.1.3",
     "tslint-config-prettier": "^1.18.0",
