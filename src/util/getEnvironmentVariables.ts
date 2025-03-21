@@ -2,15 +2,16 @@ import { promises as fsPromises, existsSync } from 'fs';
 import * as path from 'path';
 
 import isLambdaRuntimeEnvironment from './isLambdaRuntimeEnvironment';
+import isLambdaRuntimeEnvironmentNode20 from './isLambdaRuntimeEnvironmentNode20';
 
 export const AWS_TMP_DIR = '/tmp/aws';
 export const AWS_FONT_DIR = '/tmp/fonts';
-const AWS_LIB_DIR = `${AWS_TMP_DIR}/lib`;
+//const AWS_LIB_DIR = `${AWS_TMP_DIR}/lib`;
 
-export default async function getEnvironmentVariables(): Promise<
-  Record<string, string>
-> {
-  if (!isLambdaRuntimeEnvironment()) {
+export default async function getEnvironmentVariables(
+  baselibPath: string
+): Promise<Record<string, string>> {
+  if (!isLambdaRuntimeEnvironment() && !isLambdaRuntimeEnvironmentNode20()) {
     return {};
   }
   const env: Record<string, string> = {};
@@ -34,10 +35,10 @@ export default async function getEnvironmentVariables(): Promise<
   }
 
   if (!process.env.LD_LIBRARY_PATH) {
-    env.LD_LIBRARY_PATH = AWS_LIB_DIR;
-  } else if (!process.env.LD_LIBRARY_PATH.startsWith(AWS_LIB_DIR)) {
+    env.LD_LIBRARY_PATH = baselibPath;
+  } else if (!process.env.LD_LIBRARY_PATH.startsWith(baselibPath)) {
     env.LD_LIBRARY_PATH = [
-      ...new Set([AWS_LIB_DIR, ...process.env.LD_LIBRARY_PATH.split(':')]),
+      ...new Set([baselibPath, ...process.env.LD_LIBRARY_PATH.split(':')]),
     ].join(':');
   }
   return env;

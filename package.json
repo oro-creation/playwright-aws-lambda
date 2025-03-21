@@ -1,6 +1,6 @@
 {
   "name": "@oro-dxeco/playwright-aws-lambda",
-  "version": "119.0.3",
+  "version": "133.0.0-alpha.3",
   "description": "Support for running Microsoft's Playwrite on AWS Lambda and Google Cloud functions",
   "repository": {
     "type": "git",
@@ -26,7 +26,8 @@
     "format-code": "prettier --write '**/*.[jt]s'"
   },
   "dependencies": {
-    "@sparticuz/chromium": "^119.0.0",
+    "@sparticuz/chromium": "^133.0.0",
+    "@sparticuz/chromium-min": "^133.0.0",
     "lambdafs": "^2.1.1"
   },
   "peerDependencies": {

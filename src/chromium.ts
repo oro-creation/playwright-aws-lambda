@@ -13,6 +13,7 @@ import fileExists from './util/fileExists';
 import getEnvironmentVariables, {
   AWS_FONT_DIR,
 } from './util/getEnvironmentVariables';
+import isLambdaRuntimeEnvironmentNode20 from './util/isLambdaRuntimeEnvironmentNode20';
 
 const { inflate } = require('lambdafs');
 
@@ -55,7 +56,9 @@ export function getChromiumArgs(headless: boolean) {
     '--no-sandbox',
     '--no-zygote',
     '--password-store=basic',
-    '--use-gl=swiftshader',
+    '--use-gl=angle',
+    '--use-angle=swiftshader',
+    '--enable-unsafe-swiftshader',
     '--use-mock-keychain',
   ];
 
@@ -92,7 +95,11 @@ async function getChromiumExecutablePath(
   ];
 
   if (isLambdaRuntimeEnvironment()) {
-    promises.push(inflate(`${input}/aws.tar.br`));
+    promises.push(inflate(`${input}/al2.tar.br`));
+  }
+
+  if (isLambdaRuntimeEnvironmentNode20()) {
+    promises.push(inflate(`${input}/al2023.tar.br`));
   }
 
   const result = await Promise.all(promises);
@@ -104,8 +111,14 @@ export async function launchChromium(launchOptions?: Partial<LaunchOptions>) {
   const args = getChromiumArgs(headless);
   const executablePath = await getChromiumExecutablePath(headless);
 
+  const baselibPath = isLambdaRuntimeEnvironment()
+    ? '/tmp/al2/lib'
+    : isLambdaRuntimeEnvironmentNode20()
+    ? '/tmp/al2023/lib'
+    : '/tmp/aws/lib';
+
   const env: LaunchOptions['env'] = {
-    ...(await getEnvironmentVariables()),
+    ...(await getEnvironmentVariables(baselibPath)),
     ...(launchOptions?.env || {}),
   };
   const browser = await playwright.chromium.launch({
