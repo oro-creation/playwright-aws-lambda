@@ -15,7 +15,7 @@ import getEnvironmentVariables, {
 } from './util/getEnvironmentVariables';
 import isLambdaRuntimeEnvironmentNode20 from './util/isLambdaRuntimeEnvironmentNode20';
 
-const { inflate } = require('lambdafs');
+import LambdaFS from '@sparticuz/chromium/build/lambdafs';
 
 /**
  * Returns a list of recommended additional Chromium flags.
@@ -90,16 +90,16 @@ async function getChromiumExecutablePath(
 
   const input = path.join(__dirname, 'bin');
   const promises = [
-    inflate(`${input}/chromium.br`),
-    inflate(`${input}/swiftshader.tar.br`),
+    LambdaFS.inflate(path.join(input, 'chromium.br')),
+    LambdaFS.inflate(path.join(input, 'swiftshader.tar.br')),
   ];
 
   if (isLambdaRuntimeEnvironment()) {
-    promises.push(inflate(`${input}/al2.tar.br`));
+    promises.push(LambdaFS.inflate(path.join(input, 'al2.tar.br')));
   }
 
   if (isLambdaRuntimeEnvironmentNode20()) {
-    promises.push(inflate(`${input}/al2023.tar.br`));
+    promises.push(LambdaFS.inflate(path.join(input, 'al2023.tar.br')));
   }
 
   const result = await Promise.all(promises);

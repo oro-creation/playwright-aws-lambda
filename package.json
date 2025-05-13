@@ -1,6 +1,6 @@
 {
   "name": "@oro-dxeco/playwright-aws-lambda",
-  "version": "133.0.0-alpha.3",
+  "version": "133.0.0-alpha.4",
   "description": "Support for running Microsoft's Playwrite on AWS Lambda and Google Cloud functions",
   "repository": {
     "type": "git",
