@@ -6,7 +6,6 @@ import isLambdaRuntimeEnvironmentNode20 from './isLambdaRuntimeEnvironmentNode20
 
 export const AWS_TMP_DIR = '/tmp/aws';
 export const AWS_FONT_DIR = '/tmp/fonts';
-//const AWS_LIB_DIR = `${AWS_TMP_DIR}/lib`;
 
 export default async function getEnvironmentVariables(
   baselibPath: string
