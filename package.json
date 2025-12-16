@@ -1,6 +1,6 @@
 {
   "name": "@oro-dxeco/playwright-aws-lambda",
-  "version": "133.0.0",
+  "version": "143.0.0",
   "description": "Support for running Microsoft's Playwrite on AWS Lambda and Google Cloud functions",
   "repository": {
     "type": "git",
@@ -13,7 +13,7 @@
     "access": "public"
   },
   "engines": {
-    "node": ">= 8.0.0"
+    "node": ">= 22.0.0"
   },
   "scripts": {
     "compile-src-cjs": "tsc --declaration --declarationDir ./dist -p tsconfig-src-cjs.json && shx cp -R ./node_modules/@sparticuz/chromium/bin ./dist/src",
@@ -26,9 +26,10 @@
     "format-code": "prettier --write '**/*.[jt]s'"
   },
   "dependencies": {
-    "@sparticuz/chromium": "^133.0.0",
-    "@sparticuz/chromium-min": "^133.0.0",
-    "lambdafs": "^2.1.1"
+    "@sparticuz/chromium": "^143.0.0",
+    "@sparticuz/chromium-min": "^143.0.0",
+    "lambdafs": "^2.1.1",
+    "tar-fs": "^3.1.1"
   },
   "peerDependencies": {
     "playwright-core": "^1"
@@ -36,7 +37,8 @@
   "devDependencies": {
     "@types/debug": "^4.1.5",
     "@types/jest": "^26.0.9",
-    "@types/node": "~14",
+    "@types/node": "^14.18.63",
+    "@types/tar-fs": "^2.0.4",
     "husky": "^4.2.5",
     "jest": "^26.3.0",
     "lint-staged": "10.2.11",
@@ -50,5 +52,9 @@
     "tslint": "^6.1.3",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.9.7"
+  },
+  "volta": {
+    "node": "22.21.1",
+    "yarn": "1.22.22"
   }
 }
