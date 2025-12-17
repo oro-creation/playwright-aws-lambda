@@ -3,6 +3,12 @@ import { tmpdir } from 'node:os';
 import { basename, join } from 'node:path';
 import { createBrotliDecompress, createUnzip } from 'node:zlib';
 import { extract } from 'tar-fs';
+
+/**
+ * Implementation based on:
+ * https://github.com/Sparticuz/chromium/blob/6c2f507c2d1dff618327f168ebdeb5011b712644/source/lambdafs.ts#L12
+ */
+
 /**
  * Decompresses a (tarballed) Brotli or Gzip compressed file and returns the path to the decompressed file/folder.
  *
