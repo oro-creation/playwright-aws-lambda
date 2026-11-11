@@ -487,21 +487,19 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sparticuz/chromium-min@^143.0.0":
-  version "143.0.0"
-  resolved "https://registry.yarnpkg.com/@sparticuz/chromium-min/-/chromium-min-143.0.0.tgz#72d2719c7e7bc42f776f0ef09579fc4786f1bb46"
-  integrity sha512-B9nRt5kQi6q8wW+bmLlGqKC3VEulZgq3XWYAevK5B9ep3izIJGasIsVgczRvXuLeE9iGUQ8/dgSfNmC0/CbW/g==
+"@sparticuz/chromium-min@^153.0.0":
+  version "153.0.0"
+  resolved "https://registry.yarnpkg.com/@sparticuz/chromium-min/-/chromium-min-153.0.0.tgz#8a194b319dac27fecaa53657bc5a297ec6a8db7d"
+  integrity sha512-NptrPP1GRzu0YSt1VnD5vus2baVoQrQbiIaOVDO5Hdgw1vsrvGXFO9hoTE0wIb0tmlrLAzAi1tUJZS2OOGagrg==
   dependencies:
-    follow-redirects "^1.15.11"
-    tar-fs "^3.1.1"
+    tar-fs "^3.1.2"
 
-"@sparticuz/chromium@^143.0.0":
-  version "143.0.0"
-  resolved "https://registry.yarnpkg.com/@sparticuz/chromium/-/chromium-143.0.0.tgz#f98844e621baf17b347b7f2ffc948e3168cb919f"
-  integrity sha512-/vvplFwu1yDNt/Q1uwXQUwxmfZutU9K+WtzSYwptLWV8IeSdSF6vwW9hW11fZA8Gl9+2mytAGUe6/otgd2VeXA==
+"@sparticuz/chromium@^153.0.0":
+  version "153.0.0"
+  resolved "https://registry.yarnpkg.com/@sparticuz/chromium/-/chromium-153.0.0.tgz#f8b987acb42e0b715700adebf051652b9910e6a0"
+  integrity sha512-jiGWqSvPMdu4+P9TilYqAR7yEGPEHINx+lCvE/NqNO/EHYzF/x1hUiI5T6ioVIt7dEy7n88byyT0vk+dnsgQwA==
   dependencies:
-    follow-redirects "^1.15.11"
-    tar-fs "^3.1.1"
+    tar-fs "^3.1.2"
 
 "@szmarczak/http-timer@^1.1.2":
   version "1.1.2"
@@ -1818,11 +1816,6 @@ find-versions@^3.2.0:
   integrity sha512-P8WRou2S+oe222TOCHitLy8zj+SIsVJh52VP4lvXkaFVnOFFdoWv1H1Jjvel1aI6NCFOAaeAVm8qrI0odiLcww==
   dependencies:
     semver-regex "^2.0.0"
-
-follow-redirects@^1.15.11:
-  version "1.15.11"
-  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.11.tgz#777d73d72a92f8ec4d2e410eb47352a56b8e8340"
-  integrity sha512-deG2P0JfjrTxl50XGCDyfI97ZGVCxIpfKYmfyrQ54n5FO/0gfIES8C/Psl6kWVDolizcaaxZJnTS0QSMxvnsBQ==
 
 for-in@^1.0.2:
   version "1.0.2"
@@ -4378,6 +4371,17 @@ tar-fs@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/tar-fs/-/tar-fs-3.1.1.tgz#4f164e59fb60f103d472360731e8c6bb4a7fe9ef"
   integrity sha512-LZA0oaPOc2fVo82Txf3gw+AkEd38szODlptMYejQUhndHMLQ9M059uXR+AfS7DNo0NpINvSqDsvyaCrBVkptWg==
+  dependencies:
+    pump "^3.0.0"
+    tar-stream "^3.1.5"
+  optionalDependencies:
+    bare-fs "^4.0.1"
+    bare-path "^3.0.0"
+
+tar-fs@^3.1.2:
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/tar-fs/-/tar-fs-3.1.3.tgz#05668cc68a30741c3813f9c16593b8dec7dcbcd1"
+  integrity sha512-/hU4AXnIdZu+Gvl1pk0oI5f5HxWsCJRtY2aFaJdk9VvyL48DWU6iU5WAIPG+wIi1YvWA6eTJvIviP/tMAZZNwQ==
   dependencies:
     pump "^3.0.0"
     tar-stream "^3.1.5"
